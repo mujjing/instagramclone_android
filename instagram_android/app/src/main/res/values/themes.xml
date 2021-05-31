@@ -18,4 +18,8 @@
     <item name="windowNoTitle">true</item>
     <item name="android:windowFullscreen">false</item>
     </style>
+    <style name="BottomNavThem" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/systemRed</item>
+    </style>
+
 </resources>

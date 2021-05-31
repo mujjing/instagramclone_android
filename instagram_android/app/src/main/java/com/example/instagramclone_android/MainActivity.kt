@@ -18,37 +18,27 @@ import com.example.instagramclone_android.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    internal var selectedFragment: Fragment? = null
-
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.nav_home -> {
-
-                selectedFragment = HomeFragment()
+                moveToFragment(HomeFragment())
+                return@OnNavigationItemSelectedListener true
             }
             R.id.nav_search -> {
-
-                selectedFragment = SearchFragment()
+                moveToFragment(SearchFragment())
+                return@OnNavigationItemSelectedListener true
             }
             R.id.nav_add_post -> {
-
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_notifications -> {
-
-                selectedFragment = NotificationFragment()
+                moveToFragment(NotificationFragment())
+                return@OnNavigationItemSelectedListener true
             }
             R.id.nav_profile -> {
-
-                selectedFragment = ProfileFragment()
+                moveToFragment(ProfileFragment())
+                return@OnNavigationItemSelectedListener true
             }
-        }
-
-        if (selectedFragment != null) {
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fragment_container,
-                selectedFragment!!
-            ).commit()
         }
 
         false
