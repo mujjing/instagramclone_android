@@ -120,7 +120,7 @@
         android:layout_marginRight="20dp"
 
         android:layout_marginBottom="6dp"
-        android:background="@color/systemRed"
+        android:background="@color/red"
         android:textColor="@color/white"
         android:textSize="16dp"
         android:text="계정삭제"

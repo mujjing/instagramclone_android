@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".SignUpActivity">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:src="@drawable/instagram"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        app:tint="@color/white" />
+
+    <EditText
+        android:id="@+id/fullname_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_below="@+id/logo"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="6dp"
+        android:inputType="text"
+        android:hint="FullName"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/username_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_below="@+id/fullname_signin"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="6dp"
+        android:inputType="text"
+        android:hint="UserName"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/email_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_below="@+id/username_signin"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="6dp"
+        android:inputType="textEmailAddress"
+        android:hint="Email Address"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/password_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_below="@+id/email_signin"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="6dp"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_signin"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/white"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/signin_link_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
+        android:text="Already have an Account? Sign In"
+        android:textAllCaps="false"
+        android:textSize="17dp"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>
