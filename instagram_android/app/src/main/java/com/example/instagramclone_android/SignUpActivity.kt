@@ -81,8 +81,8 @@ class SignUpActivity : AppCompatActivity() {
         userRef.child(currentUserID).setValue(userMap).addOnCompleteListener { task ->
             if(task.isSuccessful) {
                 progressDialog.dismiss()
-                Toast.makeText(this, "로그인에 성공하였습니다", Toast.LENGTH_LONG).show()
-                val intent = Intent(this@SignUpActivity, MainActivity::class.java)
+                Toast.makeText(this, "회원가입에 성공하였습니다", Toast.LENGTH_LONG).show()
+                val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()
