@@ -45,14 +45,12 @@ class UserAdapter (private var mContext: Context,
         checkFollwingStatus(user.getUID(), holder.followButton)
 
         holder.userProfileImage.setOnClickListener {
-            View.OnClickListener {
                 val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
                 pref.putString("profileId", user.getUID())
                 pref.apply()
 
                 (mContext as FragmentActivity).supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, ProfileFragment()).commit()
-            }
         }
 
         holder.followButton.setOnClickListener {
