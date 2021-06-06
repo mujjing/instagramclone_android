@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.instagramclone_android.Fragments.ProfileFragment
 import com.example.instagramclone_android.Model.User
 import com.example.instagramclone_android.R
 import com.google.firebase.auth.FirebaseAuth
@@ -41,6 +43,15 @@ class UserAdapter (private var mContext: Context,
         Picasso.get().load(user.getImage()).placeholder(R.drawable.profile).into(holder.userProfileImage)
 
         checkFollwingStatus(user.getUID(), holder.followButton)
+
+        holder.userProfileImage.setOnClickListener {
+                val pref = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit()
+                pref.putString("profileId", user.getUID())
+                pref.apply()
+
+                (mContext as FragmentActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, ProfileFragment()).commit()
+        }
 
         holder.followButton.setOnClickListener {
             if (holder.followButton.text.toString() == "Follow"){

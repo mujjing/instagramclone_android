@@ -22,5 +22,10 @@ class AccountSettingsActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        binding.closeProfileBtn.setOnClickListener {
+            onBackPressed()
+            finish()
+        }
     }
 }
