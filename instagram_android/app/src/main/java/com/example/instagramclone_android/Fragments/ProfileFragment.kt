@@ -66,7 +66,35 @@ class ProfileFragment : Fragment() {
         }
 
         binding.editAccountSettingsBtn.setOnClickListener {
-            startActivity(Intent(context, AccountSettingsActivity::class.java))
+
+            val getButtonText = binding.editAccountSettingsBtn.text.toString()
+            when {
+                getButtonText == "Edit Profile" -> startActivity(Intent(context, AccountSettingsActivity::class.java))
+                getButtonText == "Follow" -> {
+                    firebaseUser.let { itl ->
+                        FirebaseDatabase.getInstance().reference
+                                .child("Follow").child(itl.toString())
+                                .child("Following").child(profileId).setValue(true)
+                    }
+                    firebaseUser.let { itl ->
+                        FirebaseDatabase.getInstance().reference
+                                .child("Follow").child(profileId)
+                                .child("Followers").child(itl.toString()).setValue(true)
+                    }
+                }
+                getButtonText == "Following" -> {
+                    firebaseUser.let { itl ->
+                        FirebaseDatabase.getInstance().reference
+                                .child("Follow").child(itl.toString())
+                                .child("Following").child(profileId).removeValue()
+                    }
+                    firebaseUser.let { itl ->
+                        FirebaseDatabase.getInstance().reference
+                                .child("Follow").child(profileId)
+                                .child("Followers").child(itl.toString()).removeValue()
+                    }
+                }
+            }
         }
         getFollowers()
         getFollowing()
@@ -141,10 +169,7 @@ class ProfileFragment : Fragment() {
         val usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(profileId)
         usersRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-//                if (context != null){
-//
-//                    return
-//                }
+
                 if (snapshot.exists()) {
                     val user = snapshot.getValue<User>(User::class.java)
                     Picasso.get().load(user!!.getImage()).placeholder(R.drawable.profile).into(binding.proImageProfileFrag)
